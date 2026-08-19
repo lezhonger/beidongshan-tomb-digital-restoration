@@ -44,7 +44,7 @@ import MediaPlaceholder from './MediaPlaceholder.vue'
         </div>
         <aside class="beyond__aside">
           <MediaPlaceholder
-            fig="15"
+            fig="35"
             caption="Method — transferable digital record"
             ratio="3 / 4"
             tone="b"

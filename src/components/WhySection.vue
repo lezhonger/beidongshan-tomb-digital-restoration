@@ -1,5 +1,10 @@
 <script setup>
 import MediaPlaceholder from './MediaPlaceholder.vue'
+import xuzhouInChina from '../assets/WhySection/Context/The location of Xuzhou in China.webp'
+import xuzhouTombLayout from '../assets/WhySection/Context/Layout of King (Queen) Chu Tomb of West Han Dynasty in Xuzhou.webp'
+import beidongshanLocation from '../assets/WhySection/Context/Location of the Tomb of the King of Chu at Beidongshan.webp'
+import bamiyanBuddhas from '../assets/WhySection/Preservation/The destruction of the Bamiyan Buddhas.webp'
+import notreDameFire from '../assets/WhySection/Preservation/The fire devastated Notre-Dame de Paris.webp'
 </script>
 
 <template>
@@ -15,13 +20,11 @@ import MediaPlaceholder from './MediaPlaceholder.vue'
       </div>
     </div>
 
-    <!-- Entry 01: Personal Interest -->
     <article class="why__entry">
       <hr class="hairline section-shell" />
       <div class="grid-12 why__row">
         <div class="why__text why__text--a">
           <p class="why__tag meta-label">01 / Motive</p>
-          <h3 class="why__sub"># Personal Interest</h3>
           <p class="why__body">
             Having a keen interest in history and cultural relics, I once traveled
             to Egypt and witnessed historic sites such as the pyramids, which also
@@ -39,7 +42,6 @@ import MediaPlaceholder from './MediaPlaceholder.vue'
       </div>
     </article>
 
-    <!-- Entry 02: Cultural Heritage Context -->
     <article class="why__entry">
       <hr class="hairline section-shell" />
       <div class="grid-12 why__row why__row--b">
@@ -47,22 +49,28 @@ import MediaPlaceholder from './MediaPlaceholder.vue'
           <div class="why__gallery">
             <MediaPlaceholder
               fig="02"
-              caption="Xuzhou location map"
-              ratio="16 / 10"
+              :src="xuzhouInChina"
+              caption="The location of Xuzhou in China"
+              ratio="4 / 3"
+              fit="contain"
               tone="a"
               class="why__gal-main"
             />
             <MediaPlaceholder
               fig="03"
-              caption="Han tomb, Xuzhou"
-              ratio="4 / 3"
+              :src="xuzhouTombLayout"
+              caption="Layout of the King (Queen) of Chu tombs of the Western Han Dynasty in Xuzhou"
+              ratio="1 / 1"
+              fit="contain"
               tone="c"
               class="why__gal-side"
             />
             <MediaPlaceholder
               fig="04"
-              caption="Beidongshan site"
-              ratio="4 / 3"
+              :src="beidongshanLocation"
+              caption="Location of the Tomb of the King of Chu at Beidongshan"
+              ratio="4 / 5"
+              fit="contain"
               tone="b"
               class="why__gal-side"
             />
@@ -70,7 +78,6 @@ import MediaPlaceholder from './MediaPlaceholder.vue'
         </div>
         <div class="why__text why__text--b">
           <p class="why__tag meta-label">02 / Context</p>
-          <h3 class="why__sub"># The Cultural Heritage Context</h3>
           <p class="why__body">
             Xuzhou, in Jiangsu Province, is home to many tombs of vassal kings from
             the Han Dynasty. The city of Xuzhou in Jiangsu Province is home to
@@ -110,6 +117,22 @@ import MediaPlaceholder from './MediaPlaceholder.vue'
           <span class="dim-line why__note-line" aria-hidden="true"></span>
           <p class="why__note-foot">Digital record as secondary preservation</p>
         </aside>
+        <div class="why__media why__media--c">
+          <MediaPlaceholder
+            fig="05"
+            :src="bamiyanBuddhas"
+            caption="The destruction of the Bamiyan Buddhas — 2001"
+            ratio="4 / 3"
+            tone="b"
+          />
+          <MediaPlaceholder
+            fig="06"
+            :src="notreDameFire"
+            caption="The fire that devastated Notre-Dame de Paris — 2019"
+            ratio="4 / 3"
+            tone="c"
+          />
+        </div>
       </div>
     </article>
   </section>
@@ -166,7 +189,7 @@ import MediaPlaceholder from './MediaPlaceholder.vue'
 }
 
 .why__tag {
-  margin-bottom: 0.85rem;
+  margin-bottom: 0.8rem;
 }
 
 .why__sub {
@@ -208,6 +231,15 @@ import MediaPlaceholder from './MediaPlaceholder.vue'
 
 .why__text--c {
   grid-column: 2 / span 7;
+}
+
+.why__media--c {
+  grid-column: 2 / span 7;
+  margin-top: clamp(1.5rem, 3vw, 2.25rem);
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: var(--gap);
+  align-items: start;
 }
 
 .why__note {
@@ -270,6 +302,7 @@ import MediaPlaceholder from './MediaPlaceholder.vue'
   .why__media--b,
   .why__text--b,
   .why__text--c,
+  .why__media--c,
   .why__note {
     grid-column: 1 / -1;
   }
@@ -298,7 +331,8 @@ import MediaPlaceholder from './MediaPlaceholder.vue'
 }
 
 @media (max-width: 600px) {
-  .why__gallery {
+  .why__gallery,
+  .why__media--c {
     grid-template-columns: 1fr;
   }
 

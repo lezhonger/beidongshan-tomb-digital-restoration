@@ -1,5 +1,8 @@
 <script setup>
 import MediaPlaceholder from './MediaPlaceholder.vue'
+import beidongshanTomb from '../assets/WhatSection/Research/Beidongshan tomb.webp'
+import guishanTomb from '../assets/WhatSection/Research/Guishan tomb.webp'
+import shizishanTomb from '../assets/WhatSection/Research/Shizishan tomb.webp'
 </script>
 
 <template>
@@ -33,12 +36,35 @@ import MediaPlaceholder from './MediaPlaceholder.vue'
           </p>
         </div>
         <div class="what__media what__media--a">
-          <MediaPlaceholder
-            fig="05"
-            caption="Archaeological reference — plan / site"
-            ratio="4 / 3"
-            tone="b"
-          />
+          <div class="what__gallery">
+            <MediaPlaceholder
+              fig="07"
+              :src="beidongshanTomb"
+              caption="Beidongshan tomb — plan"
+              ratio="16 / 10"
+              fit="contain"
+              tone="a"
+              class="what__gal-main"
+            />
+            <MediaPlaceholder
+              fig="08"
+              :src="guishanTomb"
+              caption="Guishan tomb — plan"
+              ratio="4 / 3"
+              fit="contain"
+              tone="c"
+              class="what__gal-side"
+            />
+            <MediaPlaceholder
+              fig="09"
+              :src="shizishanTomb"
+              caption="Shizishan tomb — plan"
+              ratio="4 / 5"
+              fit="contain"
+              tone="b"
+              class="what__gal-side"
+            />
+          </div>
         </div>
       </div>
     </article>
@@ -49,13 +75,13 @@ import MediaPlaceholder from './MediaPlaceholder.vue'
         <div class="what__media what__media--b">
           <div class="what__stack">
             <MediaPlaceholder
-              fig="06"
+              fig="10"
               caption="Digital modelling — spatial reconstruction"
               ratio="16 / 10"
               tone="a"
             />
             <MediaPlaceholder
-              fig="07"
+              fig="11"
               caption="First-person exploration — still frame"
               ratio="16 / 9"
               tone="c"
@@ -165,12 +191,12 @@ import MediaPlaceholder from './MediaPlaceholder.vue'
 }
 
 .what__text--a {
-  grid-column: 1 / span 6;
+  grid-column: 1 / span 5;
   padding-top: 0.5rem;
 }
 
 .what__media--a {
-  grid-column: 8 / span 5;
+  grid-column: 7 / span 6;
 }
 
 .what__media--b {
@@ -190,6 +216,21 @@ import MediaPlaceholder from './MediaPlaceholder.vue'
   display: flex;
   flex-direction: column;
   gap: var(--gap);
+}
+
+.what__gallery {
+  display: grid;
+  grid-template-columns: 1.4fr 1fr;
+  gap: var(--gap);
+  align-items: start;
+}
+
+.what__gal-main {
+  grid-column: 1 / -1;
+}
+
+.what__gal-side:nth-child(2) {
+  margin-top: 1.5rem;
 }
 
 @media (max-width: 960px) {
@@ -220,6 +261,16 @@ import MediaPlaceholder from './MediaPlaceholder.vue'
   .what__row--b {
     display: flex;
     flex-direction: column;
+  }
+}
+
+@media (max-width: 600px) {
+  .what__gallery {
+    grid-template-columns: 1fr;
+  }
+
+  .what__gal-side:nth-child(2) {
+    margin-top: 0;
   }
 }
 </style>

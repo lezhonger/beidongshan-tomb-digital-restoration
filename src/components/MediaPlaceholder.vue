@@ -27,17 +27,49 @@ defineProps({
     type: Boolean,
     default: false,
   },
+  /** Resolved image URL. When absent the tinted plane is shown instead. */
+  src: {
+    type: String,
+    default: '',
+  },
+  alt: {
+    type: String,
+    default: '',
+  },
+  /** "contain" keeps drawings and plans uncropped; "cover" fills the plate */
+  fit: {
+    type: String,
+    default: 'cover',
+    validator: (v) => ['cover', 'contain'].includes(v),
+  },
+  /** Above-the-fold imagery: load eagerly instead of lazily */
+  priority: {
+    type: Boolean,
+    default: false,
+  },
 })
 </script>
 
 <template>
   <figure
     class="media"
-    :class="[`tone-${tone}`, { 'is-full': fullBleed, 'anim-breath': breath }]"
+    :class="[
+      `tone-${tone}`,
+      { 'is-full': fullBleed, 'anim-breath': breath, 'has-img': !!src },
+    ]"
   >
     <div class="media__plane" :style="{ aspectRatio: fullBleed ? undefined : ratio }">
+      <img
+        v-if="src"
+        class="media__img"
+        :style="{ objectFit: fit }"
+        :src="src"
+        :alt="alt || caption"
+        :loading="priority ? 'eager' : 'lazy'"
+        :fetchpriority="priority ? 'high' : 'auto'"
+        decoding="async"
+      />
       <span class="media__fig">FIG. {{ fig }}</span>
-      <!-- Replace this plane with <img> later -->
     </div>
     <figcaption v-if="caption" class="media__caption">{{ caption }}</figcaption>
   </figure>
@@ -76,6 +108,14 @@ defineProps({
   background: var(--placeholder-c);
 }
 
+.media__img {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  max-width: none;
+}
+
 .media__fig {
   position: absolute;
   top: 0.65rem;
@@ -85,6 +125,24 @@ defineProps({
   text-transform: uppercase;
   color: var(--bronze);
   pointer-events: none;
+}
+
+/* Many references are line drawings on white, so the label needs its own plate */
+.has-img .media__fig {
+  top: 0;
+  left: 0;
+  padding: 0.3rem 0.5rem;
+  background: rgba(20, 18, 16, 0.72);
+  color: var(--text);
+}
+
+/* Full-bleed imagery has no frame, so align the label to the page gutter */
+.has-img.is-full .media__fig {
+  top: 0.9rem;
+  left: var(--gutter);
+  padding: 0;
+  background: none;
+  color: var(--bronze);
 }
 
 .media__caption {

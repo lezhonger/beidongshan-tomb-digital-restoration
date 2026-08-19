@@ -1,5 +1,6 @@
 <script setup>
 import MediaPlaceholder from './MediaPlaceholder.vue'
+import heroImage from '../assets/HeroImage.webp'
 </script>
 
 <template>
@@ -7,9 +8,12 @@ import MediaPlaceholder from './MediaPlaceholder.vue'
     <div class="hero__bg" aria-hidden="true">
       <MediaPlaceholder
         fig="00"
+        :src="heroImage"
+        alt="First-person view inside the reconstructed Beidongshan tomb corridor"
         tone="a"
         full-bleed
         breath
+        priority
         class="hero__plane"
       />
       <div class="hero__scrim"></div>

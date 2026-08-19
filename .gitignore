@@ -25,3 +25,7 @@ dist-ssr
 
 # Local design / copy reference (not for deploy)
 web-text.pdf
+
+# Local image pipeline (crop / resize / WebP). Keep on disk, do not commit.
+scripts/
+raw-assets/
