@@ -1,19 +1,29 @@
 <template>
   <header class="archive-bar">
-    <div class="archive-bar__inner section-shell">
-      <div class="archive-bar__left">
-        <span class="meta-label">Archive</span>
-        <span class="sep">/</span>
-        <span>Beidongshan</span>
-        <span class="sep">/</span>
-        <span>Western Han</span>
-      </div>
-      <div class="archive-bar__right">
-        <span>34.26°N 117.18°E</span>
-        <span class="sep">·</span>
-        <span>Digital Heritage</span>
-      </div>
-    </div>
+    <nav class="archive-bar__inner section-shell" aria-label="Section navigation">
+      <a href="#why" class="nav-link is-expandable" aria-label="Why Did I Do It?">
+        <span>Why</span>
+        <span class="nav-link__rest" aria-hidden="true">
+          <span>&nbsp;Did I Do It?</span>
+        </span>
+      </a>
+      <span class="sep">/</span>
+      <a href="#what" class="nav-link is-expandable" aria-label="What Did I Do?">
+        <span>What</span>
+        <span class="nav-link__rest" aria-hidden="true">
+          <span>&nbsp;Did I Do?</span>
+        </span>
+      </a>
+      <span class="sep">/</span>
+      <a href="#how" class="nav-link is-expandable" aria-label="How I Made It">
+        <span>How</span>
+        <span class="nav-link__rest" aria-hidden="true">
+          <span>&nbsp;I Made It</span>
+        </span>
+      </a>
+      <span class="sep">/</span>
+      <a href="#beyond" class="nav-link">Beyond This Project</a>
+    </nav>
     <hr class="hairline" />
   </header>
 </template>
@@ -28,9 +38,10 @@
 
 .archive-bar__inner {
   display: flex;
+  flex-wrap: wrap;
   align-items: center;
-  justify-content: space-between;
-  gap: 1rem;
+  justify-content: flex-end;
+  gap: 0.45rem;
   min-height: 2.75rem;
   font-size: var(--caption);
   letter-spacing: 0.08em;
@@ -38,21 +49,43 @@
   color: var(--muted);
 }
 
-.archive-bar__left,
-.archive-bar__right {
-  display: flex;
-  flex-wrap: wrap;
-  align-items: center;
-  gap: 0.45rem;
+.nav-link {
+  display: inline-flex;
+  align-items: baseline;
+  color: inherit;
+  white-space: nowrap;
+  transition: color 0.2s ease;
+}
+
+.nav-link:hover,
+.nav-link:focus-visible {
+  color: var(--text);
+}
+
+.nav-link__rest {
+  display: grid;
+  grid-template-columns: 0fr;
+  transition: grid-template-columns 0.35s ease;
+}
+
+.nav-link__rest > span {
+  overflow: hidden;
+  min-width: 0;
+  white-space: nowrap;
+}
+
+.nav-link.is-expandable:hover .nav-link__rest,
+.nav-link.is-expandable:focus-visible .nav-link__rest {
+  grid-template-columns: 1fr;
 }
 
 .sep {
   color: var(--earth);
 }
 
-@media (max-width: 720px) {
-  .archive-bar__right {
-    display: none;
+@media (prefers-reduced-motion: reduce) {
+  .nav-link__rest {
+    transition: none;
   }
 }
 </style>

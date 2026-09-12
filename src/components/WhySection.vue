@@ -24,7 +24,6 @@ import notreDameFire from '../assets/WhySection/Preservation/The fire devastated
       <hr class="hairline section-shell" />
       <div class="grid-12 why__row">
         <div class="why__text why__text--a">
-          <p class="why__tag meta-label">01 / Motive</p>
           <p class="why__body">
             Having a keen interest in history and cultural relics, I once traveled
             to Egypt and witnessed historic sites such as the pyramids, which also
@@ -77,7 +76,6 @@ import notreDameFire from '../assets/WhySection/Preservation/The fire devastated
           </div>
         </div>
         <div class="why__text why__text--b">
-          <p class="why__tag meta-label">02 / Context</p>
           <p class="why__body">
             Xuzhou, in Jiangsu Province, is home to many tombs of vassal kings from
             the Han Dynasty. The city of Xuzhou in Jiangsu Province is home to
@@ -94,7 +92,6 @@ import notreDameFire from '../assets/WhySection/Preservation/The fire devastated
       <hr class="hairline section-shell" />
       <div class="grid-12 why__row">
         <div class="why__text why__text--c">
-          <p class="why__tag meta-label">03 / Preservation</p>
           <h3 class="why__sub"># Why Digital Preservation?</h3>
           <p class="why__body">
             In modern society, the preservation of cultural relics is of great
@@ -186,10 +183,6 @@ import notreDameFire from '../assets/WhySection/Preservation/The fire devastated
 .why__row {
   padding-block: clamp(1.5rem, 3vw, 2.5rem) 0;
   align-items: start;
-}
-
-.why__tag {
-  margin-bottom: 0.8rem;
 }
 
 .why__sub {

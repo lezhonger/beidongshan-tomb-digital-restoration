@@ -1,6 +1,6 @@
 <script setup>
 import MediaPlaceholder from './MediaPlaceholder.vue'
-import heroImage from '../assets/HeroImage.webp'
+import heroImage from '../assets/HeroImage.png'
 </script>
 
 <template>
@@ -89,9 +89,9 @@ import heroImage from '../assets/HeroImage.webp'
   background:
     linear-gradient(
       to top,
-      rgba(20, 18, 16, 0.82) 0%,
-      rgba(20, 18, 16, 0.45) 42%,
-      rgba(20, 18, 16, 0.18) 100%
+      rgba(20, 18, 16, 0.42) 0%,
+      rgba(20, 18, 16, 0.16) 48%,
+      rgba(20, 18, 16, 0.04) 100%
     );
 }
 

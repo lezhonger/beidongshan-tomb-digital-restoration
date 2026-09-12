@@ -47,6 +47,17 @@ defineProps({
     type: Boolean,
     default: false,
   },
+  /** "image" (default) or "video" */
+  type: {
+    type: String,
+    default: 'image',
+    validator: (v) => ['image', 'video'].includes(v),
+  },
+  /** Poster frame shown before the video plays */
+  poster: {
+    type: String,
+    default: '',
+  },
 })
 </script>
 
@@ -60,7 +71,7 @@ defineProps({
   >
     <div class="media__plane" :style="{ aspectRatio: fullBleed ? undefined : ratio }">
       <img
-        v-if="src"
+        v-if="src && type !== 'video'"
         class="media__img"
         :style="{ objectFit: fit }"
         :src="src"
@@ -68,6 +79,16 @@ defineProps({
         :loading="priority ? 'eager' : 'lazy'"
         :fetchpriority="priority ? 'high' : 'auto'"
         decoding="async"
+      />
+      <video
+        v-else-if="src && type === 'video'"
+        class="media__img"
+        :style="{ objectFit: fit }"
+        :src="src"
+        :poster="poster || undefined"
+        controls
+        playsinline
+        preload="metadata"
       />
       <span class="media__fig">FIG. {{ fig }}</span>
     </div>
@@ -114,6 +135,10 @@ defineProps({
   width: 100%;
   height: 100%;
   max-width: none;
+}
+
+video.media__img {
+  background: #141210;
 }
 
 .media__fig {

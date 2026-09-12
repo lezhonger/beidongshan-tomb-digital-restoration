@@ -21,12 +21,15 @@ import dancerRef3 from '../assets/HowSection/Building/Treasure-DancingFiguries3-
 import dancerWhite from '../assets/HowSection/Building/Treasure-DancingFiguries-WhiteModel.webp'
 import dancerTextured from '../assets/HowSection/Building/Treasure-DancingFiguries-Textured.webp'
 import jadeSuitRef from '../assets/HowSection/Building/Treasure-Sewn-Ref.webp'
+import interaction1 from '../assets/HowSection/Interaction Design/Interaction-1.gif'
+import interaction2 from '../assets/HowSection/Interaction Design/Interaction-2.gif'
+import coreScripts from '../assets/HowSection/Technical Implementation/CoreScripts.png'
+import triggerSetting from '../assets/HowSection/Technical Implementation/TriggerSetting.png'
 
 const steps = [
   {
     id: '01',
     title: '#1 Research & Reference',
-    tag: '01 / Research',
     reverse: false,
     groups: [
       {
@@ -70,7 +73,6 @@ const steps = [
   {
     id: '02',
     title: '#2 Building the Space',
-    tag: '02 / Space',
     reverse: true,
     groups: [
       {
@@ -91,18 +93,33 @@ const steps = [
         ],
       },
       {
-        id: 'coffin',
-        label: 'Coffin',
-        cols: 3,
+        id: 'treasure-refs',
+        cols: 2,
         figs: [
           {
             fig: '23',
             src: coffinRef,
+            label: 'Coffin',
             caption: 'Reference',
             tone: 'a',
             ratio: '16 / 10',
             fit: 'contain',
           },
+          {
+            fig: '31',
+            src: jadeSuitRef,
+            label: 'Jade burial suit',
+            caption: 'Reference',
+            tone: 'a',
+            ratio: '16 / 10',
+            fit: 'contain',
+          },
+        ],
+      },
+      {
+        id: 'coffin-models',
+        cols: 2,
+        figs: [
           { fig: '24', src: coffinWhite, caption: 'White model', tone: 'b', ratio: '16 / 10' },
           { fig: '25', src: coffinTextured, caption: 'Textured model', tone: 'c', ratio: '16 / 10' },
         ],
@@ -126,34 +143,39 @@ const steps = [
           { fig: '30', src: dancerTextured, caption: 'Textured model', tone: 'c', ratio: '16 / 10' },
         ],
       },
-      {
-        id: 'jade-suit',
-        label: 'Jade burial suit',
-        cols: 1,
-        figs: [
-          {
-            fig: '31',
-            src: jadeSuitRef,
-            caption: 'Reference',
-            tone: 'a',
-            ratio: '2.75 / 1',
-            fit: 'contain',
-          },
-        ],
-      },
     ],
   },
   {
     id: '03',
     title: '#3 Interaction Design',
-    tag: '03 / Interaction',
     reverse: false,
+    keywords: ['Immersion', 'Solemnity'],
+    points: [
+      'First-person experience',
+      'Minimalist interaction: entering a chamber or approaching an artefact triggers a brief text introduction',
+      'Minimalist guidance: lighting directs the path of exploration',
+      'Atmospheric music and sound',
+    ],
     groups: [
       {
         id: 'interaction',
         cols: 1,
+        compact: true,
         figs: [
-          { fig: '32', caption: 'Placeholder — interaction still', tone: 'b', ratio: '16 / 10' },
+          {
+            fig: '32',
+            src: interaction1,
+            caption: 'Interaction triggers',
+            tone: 'b',
+            ratio: '16 / 9',
+          },
+          {
+            fig: '33',
+            src: interaction2,
+            caption: 'Light guiding exploration',
+            tone: 'c',
+            ratio: '16 / 9',
+          },
         ],
       },
     ],
@@ -161,29 +183,35 @@ const steps = [
   {
     id: '04',
     title: '#4 Technical Implementation',
-    tag: '04 / Technical',
-    reverse: true,
+    layout: 'stack',
+    keywordLabel: 'Tools',
+    keywords: ['Unity', 'C#', 'Blender'],
+    points: [
+      'Core scripts: PlayerController, InteractionManager, UIManager...',
+      'Collision body setting and trigger detection',
+      'Audio module call',
+    ],
     groups: [
       {
         id: 'technical',
-        cols: 1,
+        split: 'portrait',
         figs: [
-          { fig: '33', caption: 'Placeholder — technical notes', tone: 'a', ratio: '4 / 3' },
-        ],
-      },
-    ],
-  },
-  {
-    id: '05',
-    title: '#5 Final Demo',
-    tag: '05 / Demo',
-    reverse: false,
-    groups: [
-      {
-        id: 'demo',
-        cols: 1,
-        figs: [
-          { fig: '34', caption: 'Placeholder — experience recording', tone: 'c', ratio: '16 / 9' },
+          {
+            fig: '34',
+            src: coreScripts,
+            caption: 'Trigger and UI fade script',
+            tone: 'a',
+            ratio: '1031 / 1473',
+            fit: 'contain',
+          },
+          {
+            fig: '35',
+            src: triggerSetting,
+            caption: 'Trigger settings in the scene',
+            tone: 'b',
+            ratio: '1719 / 869',
+            fit: 'contain',
+          },
         ],
       },
     ],
@@ -213,28 +241,48 @@ const steps = [
       <hr class="hairline section-shell" />
       <div
         class="grid-12 how__row"
-        :class="{ 'how__row--reverse': step.reverse }"
+        :class="{
+          'how__row--reverse': step.reverse,
+          'how__row--stack': step.layout === 'stack',
+        }"
       >
         <div class="how__text">
-          <p class="how__tag meta-label">{{ step.tag }}</p>
           <h3 class="how__sub">{{ step.title }}</h3>
+          <p v-if="step.keywords" class="how__keywords">
+            <span class="meta-label">{{ step.keywordLabel || 'Experience keywords' }}</span>
+            {{ step.keywords.join(' · ') }}
+          </p>
+          <ul v-if="step.points" class="how__points">
+            <li v-for="point in step.points" :key="point">{{ point }}</li>
+          </ul>
         </div>
         <div class="how__media">
           <div v-for="group in step.groups" :key="group.id" class="how__group">
             <p v-if="group.label" class="how__group-label meta-label">
               {{ group.label }}
             </p>
-            <div class="how__figs" :class="`how__figs--c${group.cols}`">
-              <MediaPlaceholder
-                v-for="item in group.figs"
-                :key="item.fig"
-                :fig="item.fig"
-                :src="item.src"
-                :caption="item.caption"
-                :ratio="item.ratio"
-                :tone="item.tone"
-                :fit="item.fit || 'cover'"
-              />
+            <div
+              class="how__figs"
+              :class="[
+                group.split ? `how__figs--${group.split}` : `how__figs--c${group.cols}`,
+                { 'how__figs--compact': group.compact },
+              ]"
+            >
+              <div v-for="item in group.figs" :key="item.fig" class="how__fig">
+                <p v-if="item.label" class="how__group-label meta-label">
+                  {{ item.label }}
+                </p>
+                <MediaPlaceholder
+                  :fig="item.fig"
+                  :src="item.src"
+                  :poster="item.poster"
+                  :type="item.type || 'image'"
+                  :caption="item.caption"
+                  :ratio="item.ratio"
+                  :tone="item.tone"
+                  :fit="item.fit || 'cover'"
+                />
+              </div>
             </div>
           </div>
         </div>
@@ -311,8 +359,16 @@ const steps = [
   order: -1;
 }
 
-.how__tag {
-  margin-bottom: 0.85rem;
+.how__row--stack .how__text {
+  grid-column: 1 / span 5;
+  grid-row: 1;
+}
+
+.how__row--stack .how__media {
+  grid-column: 5 / -1;
+  grid-row: 2;
+  margin-top: clamp(1.5rem, 3vw, 2.5rem);
+  order: initial;
 }
 
 .how__sub {
@@ -321,6 +377,34 @@ const steps = [
   letter-spacing: 0.02em;
   color: var(--text);
   margin-bottom: 1.1rem;
+}
+
+.how__keywords {
+  margin: 0 0 1.1rem;
+  font-size: var(--caption);
+  letter-spacing: 0.06em;
+  color: var(--earth);
+}
+
+.how__keywords .meta-label {
+  display: block;
+  margin-bottom: 0.35rem;
+}
+
+.how__points {
+  list-style: none;
+  display: flex;
+  flex-direction: column;
+  gap: 0.7rem;
+  max-width: 22rem;
+  font-size: var(--body);
+  line-height: 1.7;
+  color: var(--muted);
+}
+
+.how__points li {
+  padding-left: 0.85rem;
+  border-left: 1px solid var(--line);
 }
 
 .how__group + .how__group {
@@ -338,8 +422,17 @@ const steps = [
   align-items: start;
 }
 
+.how__fig {
+  min-width: 0;
+}
+
 .how__figs--c1 {
   grid-template-columns: minmax(0, 1fr);
+}
+
+.how__figs--compact {
+  max-width: 30rem;
+  margin-inline-start: auto;
 }
 
 .how__figs--c2 {
@@ -348,6 +441,10 @@ const steps = [
 
 .how__figs--c3 {
   grid-template-columns: repeat(3, minmax(0, 1fr));
+}
+
+.how__figs--portrait {
+  grid-template-columns: minmax(0, 1fr) minmax(0, 2.8fr);
 }
 
 @media (max-width: 960px) {
@@ -362,18 +459,26 @@ const steps = [
   .how__text,
   .how__media,
   .how__row--reverse .how__text,
-  .how__row--reverse .how__media {
+  .how__row--reverse .how__media,
+  .how__row--stack .how__text,
+  .how__row--stack .how__media {
     grid-column: 1 / -1;
+    grid-row: auto;
     order: initial;
   }
 
   .how__media {
     margin-top: 1.5rem;
   }
+
+  .how__figs--compact {
+    margin-inline-start: 0;
+  }
 }
 
 @media (max-width: 600px) {
-  .how__figs--c2 {
+  .how__figs--c2,
+  .how__figs--portrait {
     grid-template-columns: minmax(0, 1fr);
   }
 

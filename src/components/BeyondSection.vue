@@ -19,7 +19,6 @@ import MediaPlaceholder from './MediaPlaceholder.vue'
       <hr class="hairline section-shell" />
       <div class="grid-12 beyond__row">
         <div class="beyond__text">
-          <p class="beyond__tag meta-label">01 / Method</p>
           <h3 class="beyond__sub"># Digital Preservation</h3>
           <p class="beyond__body">
             Although this project focuses on one Han Dynasty tomb, its methods can
@@ -43,12 +42,6 @@ import MediaPlaceholder from './MediaPlaceholder.vue'
           </p>
         </div>
         <aside class="beyond__aside">
-          <MediaPlaceholder
-            fig="35"
-            caption="Method — transferable digital record"
-            ratio="3 / 4"
-            tone="b"
-          />
           <div class="beyond__note">
             <span class="meta-label">Annotation</span>
             <p>Keywords</p>
@@ -66,7 +59,6 @@ import MediaPlaceholder from './MediaPlaceholder.vue'
       <hr class="hairline section-shell" />
       <div class="grid-12 beyond__row">
         <div class="beyond__text">
-          <p class="beyond__tag meta-label">02 / Access</p>
           <h3 class="beyond__sub"># Accessibility &amp; Education</h3>
           <p class="beyond__body">
             The approach also has significant potential in the United States.
@@ -94,8 +86,6 @@ import MediaPlaceholder from './MediaPlaceholder.vue'
             <li>Education</li>
             <li>Remote learning</li>
           </ul>
-          <span class="dim-line beyond__note-line" aria-hidden="true"></span>
-          <p class="beyond__note-foot">Distance, fragility, cost, risk</p>
         </aside>
       </div>
     </article>
@@ -104,7 +94,6 @@ import MediaPlaceholder from './MediaPlaceholder.vue'
       <hr class="hairline section-shell" />
       <div class="grid-12 beyond__row">
         <div class="beyond__text">
-          <p class="beyond__tag meta-label">03 / Responsibility</p>
           <h3 class="beyond__sub"># Cultural Responsibility</h3>
           <p class="beyond__body">
             The technology could be particularly valuable when working with
@@ -134,9 +123,7 @@ import MediaPlaceholder from './MediaPlaceholder.vue'
             <li>Responsibility</li>
             <li>Community authority</li>
             <li>Public access</li>
-          </ul>
-          <span class="dim-line beyond__note-line" aria-hidden="true"></span>
-          <p class="beyond__note-foot">Accuracy with cultural care</p>
+          </ul> -->
         </aside>
       </div>
     </article>
@@ -191,10 +178,6 @@ import MediaPlaceholder from './MediaPlaceholder.vue'
 .beyond__row {
   padding-block: clamp(1.5rem, 3vw, 2.5rem) 0;
   align-items: start;
-}
-
-.beyond__tag {
-  margin-bottom: 0.85rem;
 }
 
 .beyond__sub {

@@ -3,6 +3,8 @@ import MediaPlaceholder from './MediaPlaceholder.vue'
 import beidongshanTomb from '../assets/WhatSection/Research/Beidongshan tomb.webp'
 import guishanTomb from '../assets/WhatSection/Research/Guishan tomb.webp'
 import shizishanTomb from '../assets/WhatSection/Research/Shizishan tomb.webp'
+import demoVideo from '../assets/HowSection/Final Demo/Beidongshan_UnityDemo.mp4'
+import demoCover from '../assets/HowSection/Final Demo/DemoVideoCover.png'
 </script>
 
 <template>
@@ -22,7 +24,6 @@ import shizishanTomb from '../assets/WhatSection/Research/Shizishan tomb.webp'
       <hr class="hairline section-shell" />
       <div class="grid-12 what__row">
         <div class="what__text what__text--a">
-          <p class="what__tag meta-label">01 / Research</p>
           <h3 class="what__sub"># Historical Research</h3>
           <p class="what__body">
             For this project, I studied the history of the Han Dynasty, the
@@ -40,7 +41,7 @@ import shizishanTomb from '../assets/WhatSection/Research/Shizishan tomb.webp'
             <MediaPlaceholder
               fig="07"
               :src="beidongshanTomb"
-              caption="Beidongshan tomb — plan"
+              caption="Beidongshan tomb"
               ratio="16 / 10"
               fit="contain"
               tone="a"
@@ -49,7 +50,7 @@ import shizishanTomb from '../assets/WhatSection/Research/Shizishan tomb.webp'
             <MediaPlaceholder
               fig="08"
               :src="guishanTomb"
-              caption="Guishan tomb — plan"
+              caption="Guishan tomb"
               ratio="4 / 3"
               fit="contain"
               tone="c"
@@ -58,7 +59,7 @@ import shizishanTomb from '../assets/WhatSection/Research/Shizishan tomb.webp'
             <MediaPlaceholder
               fig="09"
               :src="shizishanTomb"
-              caption="Shizishan tomb — plan"
+              caption="Shizishan tomb"
               ratio="4 / 5"
               fit="contain"
               tone="b"
@@ -73,23 +74,17 @@ import shizishanTomb from '../assets/WhatSection/Research/Shizishan tomb.webp'
       <hr class="hairline section-shell" />
       <div class="grid-12 what__row what__row--b">
         <div class="what__media what__media--b">
-          <div class="what__stack">
-            <MediaPlaceholder
-              fig="10"
-              caption="Digital modelling — spatial reconstruction"
-              ratio="16 / 10"
-              tone="a"
-            />
-            <MediaPlaceholder
-              fig="11"
-              caption="First-person exploration — still frame"
-              ratio="16 / 9"
-              tone="c"
-            />
-          </div>
+          <MediaPlaceholder
+            fig="10"
+            type="video"
+            :src="demoVideo"
+            :poster="demoCover"
+            caption="Experience recording"
+            ratio="16 / 9"
+            tone="c"
+          />
         </div>
         <div class="what__text what__text--b">
-          <p class="what__tag meta-label">02 / Reconstruction</p>
           <h3 class="what__sub">
             # From Archaeological Evidence to Digital Reconstruction
           </h3>
@@ -167,10 +162,6 @@ import shizishanTomb from '../assets/WhatSection/Research/Shizishan tomb.webp'
   align-items: start;
 }
 
-.what__tag {
-  margin-bottom: 0.85rem;
-}
-
 .what__sub {
   font-size: var(--lead);
   font-weight: 500;
@@ -210,12 +201,6 @@ import shizishanTomb from '../assets/WhatSection/Research/Shizishan tomb.webp'
 
 .what__text--b .what__body {
   max-width: none;
-}
-
-.what__stack {
-  display: flex;
-  flex-direction: column;
-  gap: var(--gap);
 }
 
 .what__gallery {
