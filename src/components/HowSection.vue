@@ -25,6 +25,7 @@ import interaction1 from '../assets/HowSection/Interaction Design/Interaction-1.
 import interaction2 from '../assets/HowSection/Interaction Design/Interaction-2.gif'
 import coreScripts from '../assets/HowSection/Technical Implementation/CoreScripts.png'
 import triggerSetting from '../assets/HowSection/Technical Implementation/TriggerSetting.png'
+import howVideo from '../assets/HowSection/how-video.mp4'
 
 const steps = [
   {
@@ -232,6 +233,17 @@ const steps = [
       </div>
     </div>
 
+    <div class="how__lead grid-12">
+      <MediaPlaceholder
+        class="how__lead-video"
+        type="video"
+        :src="howVideo"
+        ratio="16 / 9"
+        tone="a"
+        fit="contain"
+      />
+    </div>
+
     <article
       v-for="(step, index) in steps"
       :key="step.id"
@@ -326,6 +338,10 @@ const steps = [
   letter-spacing: 0.06em;
   text-transform: uppercase;
   color: var(--text);
+}
+
+.how__lead-video {
+  grid-column: 3 / span 8;
 }
 
 .how__entry {
@@ -448,6 +464,10 @@ const steps = [
 }
 
 @media (max-width: 960px) {
+  .how__lead-video {
+    grid-column: 1 / -1;
+  }
+
   .how__index {
     grid-column: 1 / span 3;
   }

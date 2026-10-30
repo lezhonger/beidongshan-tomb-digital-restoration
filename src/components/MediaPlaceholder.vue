@@ -2,7 +2,7 @@
 defineProps({
   fig: {
     type: String,
-    required: true,
+    default: '',
   },
   caption: {
     type: String,
@@ -90,7 +90,7 @@ defineProps({
         playsinline
         preload="metadata"
       />
-      <span class="media__fig">FIG. {{ fig }}</span>
+      <span v-if="fig" class="media__fig">FIG. {{ fig }}</span>
     </div>
     <figcaption v-if="caption" class="media__caption">{{ caption }}</figcaption>
   </figure>

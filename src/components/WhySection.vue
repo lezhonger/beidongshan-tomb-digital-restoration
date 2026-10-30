@@ -5,6 +5,7 @@ import xuzhouTombLayout from '../assets/WhySection/Context/Layout of King (Queen
 import beidongshanLocation from '../assets/WhySection/Context/Location of the Tomb of the King of Chu at Beidongshan.webp'
 import bamiyanBuddhas from '../assets/WhySection/Preservation/The destruction of the Bamiyan Buddhas.webp'
 import notreDameFire from '../assets/WhySection/Preservation/The fire devastated Notre-Dame de Paris.webp'
+import whyVideo from '../assets/WhySection/why-video.mp4'
 </script>
 
 <template>
@@ -20,23 +21,28 @@ import notreDameFire from '../assets/WhySection/Preservation/The fire devastated
       </div>
     </div>
 
+    <div class="why__lead grid-12">
+      <MediaPlaceholder
+        class="why__lead-video"
+        type="video"
+        :src="whyVideo"
+        ratio="16 / 9"
+        tone="a"
+        fit="contain"
+      />
+    </div>
+
     <article class="why__entry">
       <hr class="hairline section-shell" />
       <div class="grid-12 why__row">
         <div class="why__text why__text--a">
           <p class="why__body">
-            Having a keen interest in history and cultural relics, I once traveled
-            to Egypt and witnessed historic sites such as the pyramids, which also
-            sparked my curiosity about China’s history and cultural heritage.
+            I always had an interest in ancient history since I was young, 
+            and the interests I really explored more in my early childhood 
+            were in things like robotics, math, music and programming. 
+            I was so excited to really begin this project 
+            because it allowed me to combine my love for archaeology and technology.
           </p>
-        </div>
-        <div class="why__media why__media--a">
-          <MediaPlaceholder
-            fig="01"
-            caption="Egypt travel photograph — field note"
-            ratio="4 / 3"
-            tone="b"
-          />
         </div>
       </div>
     </article>
@@ -172,6 +178,10 @@ import notreDameFire from '../assets/WhySection/Preservation/The fire devastated
   color: var(--text);
 }
 
+.why__lead-video {
+  grid-column: 3 / span 8;
+}
+
 .why__entry {
   padding-block: clamp(2.5rem, 5vw, 4rem);
 }
@@ -201,12 +211,8 @@ import notreDameFire from '../assets/WhySection/Preservation/The fire devastated
 }
 
 .why__text--a {
-  grid-column: 1 / span 5;
+  grid-column: 1 / span 8;
   padding-top: 0.5rem;
-}
-
-.why__media--a {
-  grid-column: 7 / span 6;
 }
 
 .why__media--b {
@@ -282,6 +288,10 @@ import notreDameFire from '../assets/WhySection/Preservation/The fire devastated
 }
 
 @media (max-width: 960px) {
+  .why__lead-video {
+    grid-column: 1 / -1;
+  }
+
   .why__index {
     grid-column: 1 / span 3;
   }
@@ -291,7 +301,6 @@ import notreDameFire from '../assets/WhySection/Preservation/The fire devastated
   }
 
   .why__text--a,
-  .why__media--a,
   .why__media--b,
   .why__text--b,
   .why__text--c,
@@ -300,7 +309,6 @@ import notreDameFire from '../assets/WhySection/Preservation/The fire devastated
     grid-column: 1 / -1;
   }
 
-  .why__media--a,
   .why__media--b {
     margin-top: 1.5rem;
   }

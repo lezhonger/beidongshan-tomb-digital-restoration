@@ -3,6 +3,7 @@ import MediaPlaceholder from './MediaPlaceholder.vue'
 import beidongshanTomb from '../assets/WhatSection/Research/Beidongshan tomb.webp'
 import guishanTomb from '../assets/WhatSection/Research/Guishan tomb.webp'
 import shizishanTomb from '../assets/WhatSection/Research/Shizishan tomb.webp'
+import whatVideo from '../assets/WhatSection/what-video.mp4'
 import demoVideo from '../assets/HowSection/Final Demo/Beidongshan_UnityDemo.mp4'
 import demoCover from '../assets/HowSection/Final Demo/DemoVideoCover.png'
 </script>
@@ -18,6 +19,17 @@ import demoCover from '../assets/HowSection/Final Demo/DemoVideoCover.png'
         <hr class="hairline what__rule" />
         <h2 id="what-heading" class="what__heading">What Did I Do?</h2>
       </div>
+    </div>
+
+    <div class="what__lead grid-12">
+      <MediaPlaceholder
+        class="what__lead-video"
+        type="video"
+        :src="whatVideo"
+        ratio="16 / 9"
+        tone="a"
+        fit="contain"
+      />
     </div>
 
     <article class="what__entry">
@@ -149,6 +161,10 @@ import demoCover from '../assets/HowSection/Final Demo/DemoVideoCover.png'
   color: var(--text);
 }
 
+.what__lead-video {
+  grid-column: 3 / span 8;
+}
+
 .what__entry {
   padding-block: clamp(2.5rem, 5vw, 4rem);
 }
@@ -219,6 +235,10 @@ import demoCover from '../assets/HowSection/Final Demo/DemoVideoCover.png'
 }
 
 @media (max-width: 960px) {
+  .what__lead-video {
+    grid-column: 1 / -1;
+  }
+
   .what__index {
     grid-column: 1 / span 3;
   }
