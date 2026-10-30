@@ -85,6 +85,7 @@ import demoCover from '../assets/HowSection/Final Demo/DemoVideoCover.png'
     <article class="what__entry what__entry--last">
       <hr class="hairline section-shell" />
       <div class="grid-12 what__row what__row--b">
+        <h3 class="what__heading what__demo-title">- Final Demo -</h3>
         <div class="what__media what__media--b">
           <MediaPlaceholder
             fig="10"
@@ -161,6 +162,12 @@ import demoCover from '../assets/HowSection/Final Demo/DemoVideoCover.png'
   color: var(--text);
 }
 
+.what__demo-title {
+  grid-column: 1 / -1;
+  margin-bottom: clamp(1.25rem, 3vw, 2rem);
+  text-align: center;
+}
+
 .what__lead-video {
   grid-column: 3 / span 8;
 }
@@ -207,16 +214,16 @@ import demoCover from '../assets/HowSection/Final Demo/DemoVideoCover.png'
 }
 
 .what__media--b {
-  grid-column: 1 / span 7;
+  grid-column: 3 / span 8;
 }
 
 .what__text--b {
-  grid-column: 9 / span 4;
-  padding-top: 0.25rem;
+  grid-column: 3 / span 8;
+  margin-top: clamp(1.5rem, 3vw, 2.5rem);
 }
 
 .what__text--b .what__body {
-  max-width: none;
+  max-width: 40rem;
 }
 
 .what__gallery {
@@ -254,18 +261,8 @@ import demoCover from '../assets/HowSection/Final Demo/DemoVideoCover.png'
     grid-column: 1 / -1;
   }
 
-  .what__media--a,
-  .what__media--b {
+  .what__media--a {
     margin-top: 1.5rem;
-  }
-
-  .what__text--b {
-    order: -1;
-  }
-
-  .what__row--b {
-    display: flex;
-    flex-direction: column;
   }
 }
 
